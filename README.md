@@ -19,6 +19,7 @@
 ### ✅ [Reselect](https://github.com/reduxjs/reselect)
 ### ✅ [react-router](https://reactrouter.com)
 ### ✅ [Material UI](https://mui.com)
+### ✅ CI: [GitHub Actions](https://github.com/features/actions)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
