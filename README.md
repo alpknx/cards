@@ -1,28 +1,24 @@
 # Cards
-https://alpknx.github.io/cards/ to view it on Github Pages
-This project is a tsk  show how to make api requests and receive responses.
-This is a SPA with a list of cards, each of which displays a picture and any information to your taste that came from the endpoint. 
-You can choose any public api for the task, for example, from here https://github.com/public-apis/public-apis
-What should the application be like?
-The received data is stored in the store.
-There should be a like icon on the card. When you click on which, a like is placed or removed. The icon should be tinted when it is barked.
-There should be a deletion icon on the card. When you click on which, the card is deleted.
-There should be a filter button on top, which, when pressed, shows only the painted cards. When pressed, all the cards are shown again.
-The design is not important, the main thing is that it is simple and neat.
+## https://alpknx.github.io/cards/ to view it on Github Pages
+ This project is a task  show how to make api requests and receive responses.
+ This is a SPA with a list of cards, each of which displays a picture and some information to your taste that came from the endpoint. 
+ You can choose any public api for the task, for example, I used https://picsum.photos
+ What should the application be like?
+ The received data is stored in the store.
+ There should be a like icon on the card. When you click on which, a like is placed or removed. The icon should be tinted when it is barked.
+ There should be a deletion icon on the card. When you click on which, the card is deleted.
+ There should be a filter button on top, which, when pressed, shows only the painted cards. When pressed, all the cards are shown again.
+ The design is not important, the main thing is that it should be simple and neat.
 
-#Stack for this task
-#Typescipt
-#React
-#React-redux
-#Redux/ReduxToolkit
-#Redux-Saga
-#Axios
-#Reselect
-#react-router-dom
-#Material UI
-
-
- 
+### Stack that I used to complete this task
+### ✅ [Typescipt](https://www.typescriptlang.org)
+### ✅ [React](https://reactjs.org)
+### ✅ [React-redux](https://react-redux.js.org)
+### ✅ [Redux-Saga](https://redux-saga.js.org)
+### ✅ [Axios](https://github.com/axios/axios)
+### ✅ [Reselect](https://github.com/reduxjs/reselect)
+### ✅ [react-router](https://reactrouter.com)
+### ✅ [Material UI](https://mui.com)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
