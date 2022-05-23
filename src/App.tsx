@@ -1,8 +1,8 @@
 import './App.css';
-import CardsList from './Pages/Cards/CardsList';
+import CardListPage from './containers/CardListPage';
 
 function App() {
-  return <CardsList />;
+  return <CardListPage />;
 }
 
 export default App;
