@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import cardsReducer from './cards/cards.reducer';
-import { filtersReducer } from './filter/filter.reducer';
+import { filtersReducer } from './filters/filters.reducer';
 import rootSaga from './root.saga';
 
 const rootReducer = combineReducers({

@@ -1,5 +1,5 @@
 import { CardsState } from './cards/cards.types';
-import { FilterState } from './filter/filter.reducer';
+import { FilterState } from './filters/filters.types';
 
 export interface AppState {
   cards: CardsState;
