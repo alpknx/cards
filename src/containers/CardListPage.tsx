@@ -1,54 +1,49 @@
-import { Stack, LinearProgress, Box, Grid } from '@mui/material';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import Stack from '@mui/material/Stack';
+import LinearProgress from '@mui/material/LinearProgress';
+import { Grid } from '@mui/material';
+import { Box } from '@mui/system';
+
 import { useTypedSelector } from '../hooks/useTypedSelector';
+import { Card } from '../models/card';
 import {
-  cardsLoadRequestAc,
-  cardUnlikeRequestAc,
-  cardLikeRequestAc,
-  cardRemoveRequestAc,
+  cardsLoadRequestAction,
+  cardUnlikeRequestAction,
+  cardLikeRequestAction,
+  cardRemoveRequestAction,
 } from '../store/cards/cards.actions';
-import { setFilterAc } from '../store/filters/filters.actions';
-import { FilterLikeOption } from '../store/filters/filters.types';
-import { getFilteredCards, getLikesFilter, getLoading } from '../store/selectors';
-import * as ICard from '../models/card';
-import CardsList from '../components/CardsList';
-import FilterBar from '../components/FilterBar';
+import { getFilteredCards, getFilters, getLoading } from '../store/selectors';
+import CardList from '../components/CardList';
+import { FiltersState } from '../store/filters/filters.types';
+import FiltersBar from '../components/FilterBar';
+import { setFiltersAction } from '../store/filters/filters.actions';
 
 const CardListPage = () => {
-  const cards = useTypedSelector((state) => getFilteredCards(state));
-  const loading = useTypedSelector((state) => getLoading(state));
-  const filters = useTypedSelector((state) => getLikesFilter(state));
-  const [likeFilter, setLikeFilter] = useState<FilterLikeOption>(filters);
   const dispatch = useDispatch();
 
+  const filters = useTypedSelector((state) => getFilters(state));
+  const cards = useTypedSelector((state) => getFilteredCards(state));
+  const loading = useTypedSelector((state) => getLoading(state));
+
   useEffect(() => {
-    dispatch(cardsLoadRequestAc());
+    dispatch(cardsLoadRequestAction());
   }, [dispatch]);
 
-  useEffect(() => {
-    dispatch(setFilterAc(likeFilter));
-  }, [dispatch, likeFilter]);
-
-  const toggleLike = (card: ICard.Card) => {
+  const toggleLike = (card: Card) => {
     if (card.liked) {
-      dispatch(cardUnlikeRequestAc(card.id));
+      dispatch(cardUnlikeRequestAction(card.id));
     } else {
-      dispatch(cardLikeRequestAc(card.id));
+      dispatch(cardLikeRequestAction(card.id));
     }
   };
 
   const removeCard = (id: number) => {
-    dispatch(cardRemoveRequestAc(id));
+    dispatch(cardRemoveRequestAction(id));
   };
 
-  const FiltersChange = (likeFilter: string) => {
-    if (likeFilter === 'LIKED') {
-      setLikeFilter('ALL');
-    }
-    if (likeFilter === 'ALL') {
-      setLikeFilter('LIKED');
-    }
+  const onFiltersChange = (filters: FiltersState) => {
+    dispatch(setFiltersAction(filters));
   };
 
   if (loading) {
@@ -64,10 +59,10 @@ const CardListPage = () => {
       <Grid container spacing={2} justifyContent='center'>
         <Grid item xs={3}>
           <Grid container justifyContent='center'>
-            <FilterBar filters={filters} onFiltersChange={FiltersChange} />
+            <FiltersBar filters={filters} onFiltersChange={onFiltersChange} />
           </Grid>
         </Grid>
-        <CardsList items={cards} onItemRemove={removeCard} onToggleLike={toggleLike} />
+        <CardList items={cards} onItemRemove={removeCard} onToggleLike={toggleLike} />;
       </Grid>
     </Box>
   );

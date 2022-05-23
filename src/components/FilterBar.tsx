@@ -1,22 +1,31 @@
-import { Box, Button } from '@mui/material';
-import { FilterLikeOption } from '../store/filters/filters.types';
+import { Box, FormControlLabel, Grid } from '@mui/material';
+import Checkbox from '@mui/material/Checkbox';
 
-type FilterBarProps = {
-  filters: FilterLikeOption;
-  onFiltersChange: (filters: FilterLikeOption) => void;
+import { FiltersState } from '../store/filters/filters.types';
+
+type FiltersBarProps = {
+  filters: FiltersState;
+  onFiltersChange: (filters: FiltersState) => void;
 };
 
-const FilterBar = ({ filters, onFiltersChange }: FilterBarProps) => {
+const FiltersBar = ({ filters, onFiltersChange }: FiltersBarProps) => {
   return (
-    <Box>
-      <Button color='error' variant='contained' size='large' onClick={(e) => onFiltersChange(filters)}>
-        {filters === 'ALL'
-          ? 'ПОКАЗАТЬ ВЫБРАННЫЕ КАРТОЧКИ'
-          : filters === 'LIKED'
-          ? 'ПОКАЗАТЬ ВСЕ КАРТОЧКИ'
-          : 'ПОКАЗАТЬ ВЫБРАННЫЕ КАРТОЧКИ'}
-      </Button>
+    <Box margin='16px'>
+      <Grid container spacing={2} justifyContent='center'>
+        <Grid item xs={12}>
+          <FormControlLabel
+            label='Liked only'
+            control={
+              <Checkbox
+                checked={filters.likeFilter}
+                onChange={(e, value) => onFiltersChange({ ...filters, likeFilter: value })}
+              />
+            }
+          />
+        </Grid>
+      </Grid>
     </Box>
   );
 };
-export default FilterBar;
+
+export default FiltersBar;

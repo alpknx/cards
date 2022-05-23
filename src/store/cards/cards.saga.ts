@@ -2,50 +2,51 @@ import { all, call, put, takeLatest } from 'redux-saga/effects';
 import { fetchCards, likeCard, removeCard, unlikeCard } from '../../api/api';
 import { Card } from '../../models/card';
 import {
-  cardLikeFailureAc,
-  cardLikeSuccessAc,
-  cardRemoveFailureAc,
-  cardRemoveSuccessAc,
-  cardsLoadFailureAc,
-  cardsLoadSuccessAc,
-  cardUnlikeFailureAc,
-  cardUnlikeSuccessAc,
+  cardLikeFailureAction,
+  cardLikeSuccessAction,
+  cardRemoveFailureAction,
+  cardRemoveSuccessAction,
+  cardsLoadFailureAction,
+  cardsLoadSuccessAction,
+  cardUnlikeFailureAction,
+  cardUnlikeSuccessAction,
 } from './cards.actions';
 import { CardsActionTypes } from './cards.types';
 
 function* cardsLoadSaga() {
   try {
     const data: Card[] = yield call(fetchCards);
-    yield put(cardsLoadSuccessAc(data));
+    yield put(cardsLoadSuccessAction(data));
   } catch (error) {
-    yield put(cardsLoadFailureAc());
+    yield put(cardsLoadFailureAction());
   }
 }
 
 function* likeSaga(action: any) {
   try {
     yield call(likeCard, action.id);
-    yield put(cardLikeSuccessAc(action.id));
+    yield put(cardLikeSuccessAction(action.id));
   } catch (error) {
-    yield put(cardLikeFailureAc());
+    console.log(error);
+    yield put(cardLikeFailureAction());
   }
 }
 
 function* unlikeSaga(action: any) {
   try {
     yield call(unlikeCard, action.id);
-    yield put(cardUnlikeSuccessAc(action.id));
+    yield put(cardUnlikeSuccessAction(action.id));
   } catch (error) {
-    yield put(cardUnlikeFailureAc());
+    yield put(cardUnlikeFailureAction());
   }
 }
 
 function* removeSaga(action: any) {
   try {
     yield call(removeCard, action.id);
-    yield put(cardRemoveSuccessAc(action.id));
+    yield put(cardRemoveSuccessAction(action.id));
   } catch (error) {
-    yield put(cardRemoveFailureAc());
+    yield put(cardRemoveFailureAction());
   }
 }
 

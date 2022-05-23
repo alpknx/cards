@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 import { Card } from '../models/card';
-import { FilterLikeOption } from './filters/filters.types';
+import { FiltersState } from './filters/filters.types';
 import { AppState } from './types';
 
 export const getLoading = (state: AppState) => {
@@ -11,16 +11,16 @@ export const getCards = (state: AppState) => {
   return state.cards.cards;
 };
 
-export const getLikesFilter = (state: AppState) => {
-  return state.filters.likeFilter;
+export const getFilters = (state: AppState) => {
+  return state.filters;
 };
 
-export const getFilteredCards = createSelector(getLikesFilter, getCards, (filter: FilterLikeOption, cards: Card[]) => {
-  console.log(filter);
-  switch (filter) {
-    case 'LIKED':
-      return cards.filter((card) => card.liked);
-    default:
-      return cards;
+export const getFilteredCards = createSelector(getFilters, getCards, (filters: FiltersState, cards: Card[]) => {
+  let filteredCards = cards;
+
+  if (filters.likeFilter) {
+    filteredCards = filteredCards.filter((card) => card.liked);
   }
+
+  return filteredCards;
 });

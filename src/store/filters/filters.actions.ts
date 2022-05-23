@@ -1,12 +1,12 @@
-import { FilterActionTypes, FilterLikeOption } from './filters.types';
+import { FiltersActionTypes, FiltersState } from './filters.types';
 
-export function setFilterAc(value: FilterLikeOption) {
-  return { type: FilterActionTypes.SET_FILTER, value };
+export function setFiltersAction(filters: FiltersState) {
+  return { type: FiltersActionTypes.SET_FILTERS, filters };
 }
 
-export interface setFilter {
-  type: FilterActionTypes.SET_FILTER;
-  value: FilterLikeOption;
+export interface SetFilters {
+  type: FiltersActionTypes.SET_FILTERS;
+  filters: FiltersState;
 }
 
-export type FilterAction = setFilter;
+export type FiltersAction = SetFilters;

@@ -1,119 +1,119 @@
 import { Card } from '../../models/card';
 import { CardsActionTypes } from './cards.types';
 
-export function cardsLoadRequestAc() {
+export function cardsLoadRequestAction() {
   return { type: CardsActionTypes.CARDS_LOAD_REQUEST };
 }
 
-export function cardsLoadSuccessAc(cards: Card[]) {
+export function cardsLoadSuccessAction(cards: Card[]) {
   return { type: CardsActionTypes.CARDS_LOAD_SUCCESS, cards };
 }
 
-export function cardsLoadFailureAc() {
+export function cardsLoadFailureAction() {
   return { type: CardsActionTypes.CARDS_LOAD_FAILURE };
 }
 
-export function cardLikeRequestAc(id: number) {
+export function cardLikeRequestAction(id: number) {
   return { type: CardsActionTypes.CARD_LIKE_REQUEST, id };
 }
 
-export function cardLikeSuccessAc(id: number) {
+export function cardLikeSuccessAction(id: number) {
   return { type: CardsActionTypes.CARD_LIKE_SUCCESS, id };
 }
 
-export function cardLikeFailureAc() {
+export function cardLikeFailureAction() {
   return { type: CardsActionTypes.CARD_LIKE_FAILURE };
 }
 
-export function cardUnlikeRequestAc(id: number) {
+export function cardUnlikeRequestAction(id: number) {
   return { type: CardsActionTypes.CARD_UNLIKE_REQUEST, id };
 }
 
-export function cardUnlikeSuccessAc(id: number) {
+export function cardUnlikeSuccessAction(id: number) {
   return { type: CardsActionTypes.CARD_UNLIKE_SUCCESS, id };
 }
 
-export function cardUnlikeFailureAc() {
+export function cardUnlikeFailureAction() {
   return { type: CardsActionTypes.CARD_UNLIKE_FAILURE };
 }
 
-export function cardRemoveRequestAc(id: number) {
+export function cardRemoveRequestAction(id: number) {
   return { type: CardsActionTypes.CARD_REMOVE_REQUEST, id };
 }
 
-export function cardRemoveSuccessAc(id: number) {
+export function cardRemoveSuccessAction(id: number) {
   return { type: CardsActionTypes.CARD_REMOVE_SUCCESS, id };
 }
 
-export function cardRemoveFailureAc() {
+export function cardRemoveFailureAction() {
   return { type: CardsActionTypes.CARD_REMOVE_FAILURE };
 }
 
-export interface cardsLoadRequest {
+export interface CardsLoadRequest {
   type: CardsActionTypes.CARDS_LOAD_REQUEST;
 }
 
-export interface cardsLoadSuccess {
+export interface CardsLoadSuccess {
   type: CardsActionTypes.CARDS_LOAD_SUCCESS;
   cards: Card[];
 }
 
-export interface cardsLoadFailure {
+export interface CardsLoadFailure {
   type: CardsActionTypes.CARDS_LOAD_FAILURE;
 }
 
-export interface cardLikeRequest {
+export interface CardLikeRequest {
   type: CardsActionTypes.CARD_LIKE_REQUEST;
   id: number;
 }
 
-export interface cardLikeSuccess {
+export interface CardLikeSuccess {
   type: CardsActionTypes.CARD_LIKE_SUCCESS;
   id: number;
 }
 
-export interface cardLikeFailure {
+export interface CardLikeFailure {
   type: CardsActionTypes.CARD_LIKE_FAILURE;
 }
 
-export interface cardUnlikeRequest {
+export interface CardUnlikeRequest {
   type: CardsActionTypes.CARD_UNLIKE_REQUEST;
   id: number;
 }
 
-export interface cardUnlikeSuccess {
+export interface CardUnlikeSuccess {
   type: CardsActionTypes.CARD_UNLIKE_SUCCESS;
   id: number;
 }
 
-export interface cardUnlikeFailure {
+export interface CardUnlikeFailure {
   type: CardsActionTypes.CARD_UNLIKE_FAILURE;
 }
 
-export interface cardRemoveRequest {
+export interface CardRemoveRequest {
   type: CardsActionTypes.CARD_REMOVE_REQUEST;
   id: number;
 }
 
-export interface cardRemoveSuccess {
+export interface CardRemoveSuccess {
   type: CardsActionTypes.CARD_REMOVE_SUCCESS;
   id: number;
 }
 
-export interface cardRemoveFailure {
+export interface CardRemoveFailure {
   type: CardsActionTypes.CARD_REMOVE_FAILURE;
 }
 
 export type CardsAction =
-  | cardsLoadRequest
-  | cardsLoadSuccess
-  | cardsLoadFailure
-  | cardLikeRequest
-  | cardLikeSuccess
-  | cardLikeFailure
-  | cardUnlikeRequest
-  | cardUnlikeSuccess
-  | cardUnlikeFailure
-  | cardRemoveRequest
-  | cardRemoveSuccess
-  | cardRemoveFailure;
+  | CardsLoadRequest
+  | CardsLoadSuccess
+  | CardsLoadFailure
+  | CardLikeRequest
+  | CardLikeSuccess
+  | CardLikeFailure
+  | CardUnlikeRequest
+  | CardUnlikeSuccess
+  | CardUnlikeFailure
+  | CardRemoveRequest
+  | CardRemoveSuccess
+  | CardRemoveFailure;

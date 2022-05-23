@@ -1,9 +1,7 @@
-export type FilterLikeOption = 'ALL' | 'LIKED';
-
-export interface FilterState {
-  likeFilter: FilterLikeOption;
+export interface FiltersState {
+  likeFilter: boolean;
 }
 
-export enum FilterActionTypes {
-  SET_FILTER = 'SET_FILTER',
+export enum FiltersActionTypes {
+  SET_FILTERS = 'SET_FILTERS',
 }

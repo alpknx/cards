@@ -1,14 +1,14 @@
-import { FilterAction } from './filters.actions';
-import { FilterActionTypes, FilterState } from './filters.types';
+import { FiltersAction } from './filters.actions';
+import { FiltersActionTypes, FiltersState } from './filters.types';
 
-const initialState: FilterState = {
-  likeFilter: 'ALL',
+const initialState: FiltersState = {
+  likeFilter: false,
 };
 
-export function filtersReducer(state = initialState, action: FilterAction) {
+export function filtersReducer(state = initialState, action: FiltersAction) {
   switch (action.type) {
-    case FilterActionTypes.SET_FILTER:
-      return { ...state, likeFilter: action.value };
+    case FiltersActionTypes.SET_FILTERS:
+      return { ...state, ...action.filters };
     default:
       return state;
   }

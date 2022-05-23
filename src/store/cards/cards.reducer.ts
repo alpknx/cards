@@ -22,11 +22,19 @@ export default function cardsReducer(state = initialState, action: CardsAction):
       return { ...state, loading: true };
     }
     case CardsActionTypes.CARD_LIKE_SUCCESS: {
-      const cardToLike = state.cards.find((card) => card.id === action.id);
-      if (cardToLike !== undefined) {
-        cardToLike.liked = true;
-      }
-      return { ...state, loading: false, cards: [...state.cards] };
+      const cards = [...state.cards];
+      return {
+        ...state,
+        loading: false,
+        cards: [
+          ...cards.map((card) => {
+            if (card.id === action.id) {
+              return { ...card, liked: true };
+            }
+            return card;
+          }),
+        ],
+      };
     }
     case CardsActionTypes.CARD_LIKE_FAILURE: {
       return { ...state, loading: false };
@@ -36,11 +44,19 @@ export default function cardsReducer(state = initialState, action: CardsAction):
       return { ...state, loading: true };
     }
     case CardsActionTypes.CARD_UNLIKE_SUCCESS: {
-      const cardToUnlike = state.cards.find((card) => card.id === action.id);
-      if (cardToUnlike !== undefined) {
-        cardToUnlike.liked = false;
-      }
-      return { ...state, loading: false, cards: [...state.cards] };
+      const cards = [...state.cards];
+      return {
+        ...state,
+        loading: false,
+        cards: [
+          ...cards.map((card) => {
+            if (card.id === action.id) {
+              return { ...card, liked: false };
+            }
+            return card;
+          }),
+        ],
+      };
     }
     case CardsActionTypes.CARD_UNLIKE_FAILURE: {
       return { ...state, loading: false };

@@ -2,17 +2,18 @@ import { Box, CardActions, CardContent, CardMedia, Grid, IconButton, Typography 
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import { Card } from '@mui/material';
-import * as ICard from '../models/card';
+import { Card as CardUI } from '@mui/material';
 import { pink } from '@mui/material/colors';
 
+import { Card } from '../models/card';
+
 type CardListProps = {
-  items: ICard.Card[];
-  onToggleLike: (card: ICard.Card) => void;
+  items: Card[];
+  onToggleLike: (card: Card) => void;
   onItemRemove: (id: number) => void;
 };
 
-const CardsList = ({ items, onToggleLike, onItemRemove }: CardListProps) => {
+const CardList = ({ items, onToggleLike, onItemRemove }: CardListProps) => {
   return (
     <Box margin='16px'>
       <Grid container spacing={2} justifyContent='center'>
@@ -21,7 +22,7 @@ const CardsList = ({ items, onToggleLike, onItemRemove }: CardListProps) => {
             {items.map((item) => {
               return (
                 <Grid item key={item.id} xs={1} sm={4} md={4}>
-                  <Card key={item.id}>
+                  <CardUI key={item.id}>
                     <CardMedia image={item.download_url} component='img' alt='' height='194' width='358'></CardMedia>
                     <CardContent>
                       <Typography variant='body2' color='text.secondary'>
@@ -29,14 +30,14 @@ const CardsList = ({ items, onToggleLike, onItemRemove }: CardListProps) => {
                       </Typography>
                     </CardContent>
                     <CardActions>
-                      <IconButton onClick={(e) => onToggleLike(item)}>
+                      <IconButton onClick={() => onToggleLike(item)}>
                         {item.liked ? <FavoriteIcon sx={{ color: pink[500] }} /> : <FavoriteBorderIcon />}
                       </IconButton>
-                      <IconButton onClick={(e) => onItemRemove(item.id)}>
+                      <IconButton onClick={() => onItemRemove(item.id)}>
                         <DeleteOutlineIcon />
                       </IconButton>
                     </CardActions>
-                  </Card>
+                  </CardUI>
                 </Grid>
               );
             })}
@@ -47,4 +48,4 @@ const CardsList = ({ items, onToggleLike, onItemRemove }: CardListProps) => {
   );
 };
 
-export default CardsList;
+export default CardList;
