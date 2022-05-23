@@ -2,12 +2,14 @@ import { configureStore } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import cardsReducer from './cards/cards.reducer';
+import cardsSliceReducer from './cards/cards.slice';
+import filtersSliceReducer from './filters/filter.slice';
 import { filtersReducer } from './filters/filters.reducer';
 import rootSaga from './root.saga';
 
 const rootReducer = combineReducers({
-  cards: cardsReducer,
-  filters: filtersReducer,
+  cards: cardsSliceReducer,
+  filters: filtersSliceReducer,
 });
 
 const sagaMiddleware = createSagaMiddleware();

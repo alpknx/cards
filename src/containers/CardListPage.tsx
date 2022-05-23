@@ -18,6 +18,8 @@ import CardList from '../components/CardList';
 import { FiltersState } from '../store/filters/filters.types';
 import FiltersBar from '../components/FilterBar';
 import { setFiltersAction } from '../store/filters/filters.actions';
+import { cardLikeRequest, cardRemoveRequest, cardsLoadRequest, cardUnLikeRequest } from '../store/cards/cards.slice';
+import { FiltersSliceState, setFilters } from '../store/filters/filter.slice';
 
 const CardListPage = () => {
   const dispatch = useDispatch();
@@ -27,23 +29,23 @@ const CardListPage = () => {
   const loading = useTypedSelector((state) => getLoading(state));
 
   useEffect(() => {
-    dispatch(cardsLoadRequestAction());
+    dispatch(cardsLoadRequest(true));
   }, [dispatch]);
 
   const toggleLike = (card: Card) => {
     if (card.liked) {
-      dispatch(cardUnlikeRequestAction(card.id));
+      dispatch(cardUnLikeRequest(card.id));
     } else {
-      dispatch(cardLikeRequestAction(card.id));
+      dispatch(cardLikeRequest(card.id));
     }
   };
 
   const removeCard = (id: number) => {
-    dispatch(cardRemoveRequestAction(id));
+    dispatch(cardRemoveRequest(id));
   };
 
-  const onFiltersChange = (filters: FiltersState) => {
-    dispatch(setFiltersAction(filters));
+  const onFiltersChange = (filters: FiltersSliceState) => {
+    dispatch(setFilters(filters));
   };
 
   if (loading) {
