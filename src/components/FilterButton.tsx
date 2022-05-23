@@ -1,10 +1,12 @@
 import { Box, Button } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { FilterLikeOption, setFilterAc } from '../store/filter/filter-reducer';
+import { useTypedSelector } from '../hooks/useTypedSelector';
+import { FilterLikeOption, setFilterAc } from '../store/filter/filter.reducer';
 
 const FilterButton = () => {
-  const [likeFilter, setLikeFilter] = useState<FilterLikeOption>('ALL');
+  const setLikeFilterFirst = useTypedSelector((state) => state.filters.likeFilter);
+  const [likeFilter, setLikeFilter] = useState<FilterLikeOption>(setLikeFilterFirst);
 
   const dispatch = useDispatch();
   useEffect(() => {

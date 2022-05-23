@@ -1,5 +1,53 @@
 import { Card } from '../../models/card';
-import { CardsActionTypes } from './cards-types';
+import { CardsActionTypes } from './cards.types';
+
+export function cardsLoadRequestAc() {
+  return { type: CardsActionTypes.CARDS_LOAD_REQUEST };
+}
+
+export function cardsLoadSuccessAc(cards: Card[]) {
+  return { type: CardsActionTypes.CARDS_LOAD_SUCCESS, cards };
+}
+
+export function cardsLoadFailureAc() {
+  return { type: CardsActionTypes.CARDS_LOAD_FAILURE };
+}
+
+export function cardLikeRequestAc(id: number) {
+  return { type: CardsActionTypes.CARD_LIKE_REQUEST, id };
+}
+
+export function cardLikeSuccessAc(id: number) {
+  return { type: CardsActionTypes.CARD_LIKE_SUCCESS, id };
+}
+
+export function cardLikeFailureAc() {
+  return { type: CardsActionTypes.CARD_LIKE_FAILURE };
+}
+
+export function cardUnlikeRequestAc(id: number) {
+  return { type: CardsActionTypes.CARD_UNLIKE_REQUEST, id };
+}
+
+export function cardUnlikeSuccessAc(id: number) {
+  return { type: CardsActionTypes.CARD_UNLIKE_SUCCESS, id };
+}
+
+export function cardUnlikeFailureAc() {
+  return { type: CardsActionTypes.CARD_UNLIKE_FAILURE };
+}
+
+export function cardRemoveRequestAc(id: number) {
+  return { type: CardsActionTypes.CARD_REMOVE_REQUEST, id };
+}
+
+export function cardRemoveSuccessAc(id: number) {
+  return { type: CardsActionTypes.CARD_REMOVE_SUCCESS, id };
+}
+
+export function cardRemoveFailureAc() {
+  return { type: CardsActionTypes.CARD_REMOVE_FAILURE };
+}
 
 export interface cardsLoadRequest {
   type: CardsActionTypes.CARDS_LOAD_REQUEST;

@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import cardsReducer from './cards/cardsReducer';
-import { filtersReducer } from './filter/filter-reducer';
-import rootSaga from './rootSaga';
+import cardsReducer from './cards/cards.reducer';
+import { filtersReducer } from './filter/filter.reducer';
+import rootSaga from './root.saga';
 
 const rootReducer = combineReducers({
   cards: cardsReducer,

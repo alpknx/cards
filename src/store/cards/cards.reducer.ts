@@ -1,5 +1,5 @@
-import { CardsAction } from './cards-action';
-import { CardsState, CardsActionTypes } from './cards-types';
+import { CardsAction } from './cards.actions';
+import { CardsState, CardsActionTypes } from './cards.types';
 
 const initialState: CardsState = {
   cards: [],

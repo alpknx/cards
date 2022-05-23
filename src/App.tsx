@@ -1,5 +1,5 @@
 import './App.css';
-import CardsList from './Pages/Cards/CardsList';
+import CardsList from './pages/cards/CardsList';
 
 function App() {
   return <CardsList />;

@@ -10,11 +10,11 @@ import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import * as ICard from '../../models/card';
 import {
-  cardsLoadRequest,
-  cardUnlikeRequest,
-  cardLikeRequest,
-  cardRemoveRequest,
-} from '../../store/cards/cards-actions';
+  cardsLoadRequestAc,
+  cardUnlikeRequestAc,
+  cardLikeRequestAc,
+  cardRemoveRequestAc,
+} from '../../store/cards/cards.actions';
 import { getFilteredCards, getLoading } from '../../store/selectors';
 import FilterButton from '../../components/FilterButton';
 import { pink } from '@mui/material/colors';
@@ -22,7 +22,7 @@ import { pink } from '@mui/material/colors';
 const CardsList = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(cardsLoadRequest());
+    dispatch(cardsLoadRequestAc());
   }, [dispatch]);
 
   const cards = useTypedSelector((state) => getFilteredCards(state));
@@ -30,14 +30,14 @@ const CardsList = () => {
 
   const toggleLike = (card: ICard.Card) => {
     if (card.liked) {
-      dispatch(cardUnlikeRequest(card.id));
+      dispatch(cardUnlikeRequestAc(card.id));
     } else {
-      dispatch(cardLikeRequest(card.id));
+      dispatch(cardLikeRequestAc(card.id));
     }
   };
 
   const removeCard = (id: number) => {
-    dispatch(cardRemoveRequest(id));
+    dispatch(cardRemoveRequestAc(id));
   };
 
   if (loading) {

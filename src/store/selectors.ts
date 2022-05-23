@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 import { Card } from '../models/card';
-import { FilterLikeOption } from './filter/filter-reducer';
+import { FilterLikeOption } from './filter/filter.reducer';
 import { AppState } from './types';
 
 export const getLoading = (state: AppState) => {
