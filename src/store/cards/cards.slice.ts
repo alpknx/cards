@@ -31,13 +31,19 @@ export const cardsSlice = createSlice({
       state.loading = true;
     },
     cardLikeSuccess: (state, action: PayloadAction<number>) => {
-      state.loading = false;
-      state.cards.map((card) => {
-        if (card.id === action.payload) {
-          return { card, liked: true };
-        }
-        return card;
-      });
+      const cards = [...state.cards];
+      return {
+        ...state,
+        loading: false,
+        cards: [
+          ...cards.map((card) => {
+            if (card.id === action.payload) {
+              return { ...card, liked: false };
+            }
+            return card;
+          }),
+        ],
+      };
     },
     cardLikeFailure: (state, action: PayloadAction<boolean>) => {
       state.loading = action.payload;
