@@ -9,7 +9,7 @@ import rootSaga from './root.saga';
 const rootReducer = combineReducers({
   cards: cardsReducer,
   filters: filtersReducer,
-  auth: authReducer
+  auth: authReducer,
 });
 
 const sagaMiddleware = createSagaMiddleware();

@@ -6,16 +6,16 @@ import Profile from './components/Profile';
 import CardListPage from './containers/CardListPage';
 
 function App() {
-  return(
-	<BrowserRouter>
-	<Navbar/>
-	<Routes>
-		<Route path='/' element={<Navigate replace to="/login"/>}/>
-		<Route path='/news' element={<CardListPage/>}/>
-		<Route path='/profile' element={<Profile/>}/>
-	</Routes>
-	<AppRouter/>
-	</BrowserRouter>
+  return (
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path='/' element={<Navigate replace to='/login' />} />
+        <Route path='/news' element={<CardListPage />} />
+        <Route path='/profile' element={<Profile />} />
+      </Routes>
+      <AppRouter />
+    </BrowserRouter>
   );
 }
 
