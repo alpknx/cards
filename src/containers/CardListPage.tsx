@@ -27,7 +27,9 @@ const CardListPage = () => {
   const loading = useTypedSelector((state) => getLoading(state));
 
   useEffect(() => {
-    dispatch(cardsLoadRequestAction());
+			document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#FF0000');
+			document.querySelector('meta[name="apple-mobile-web-app-status-bar-style"]')?.setAttribute('content', '#FF0000');
+      dispatch(cardsLoadRequestAction());
   }, [dispatch]);
 
   const toggleLike = (card: Card) => {
